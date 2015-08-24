@@ -5,7 +5,7 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 #####Game Strategy and General Description
->Two player game where player one and player two will attempt to master the drums.  The computer will select a random drum pattern, that the players have to match.  Win and they are deemed a Rockstar.  Lose and "Dont quit your day job!".  The game will also have a 30 seond countdown clock per turn. 
+>Two player game where player one and player two will attempt to master the drums.  The computer will select a random drum pattern, that the players have to match.  Win and they are deemed a Rockstar.  Lose and "Dont quit your day job!".  The game will also have a 30 second countdown clock per turn. 
 >Game is similar to "Simon Says" memory game where a player has to remember the sequence of lighted buttons. Drums will hightlight or change color to show the pattern to play. 
 
 ----------

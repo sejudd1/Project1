@@ -26,4 +26,7 @@
 > event listenters for the "key down" to play the pattern the computer selects
 > event listener "on click" to start game
 > function with for loop and a variable set as an array for the drums, so the computer will know how many drums to select. 
->  
+> computer selects random drums using 
+>Math.floor(Math.random() * n--)
+use keyframes - css animation style - to change the color of tom with event listener
+
