@@ -1,12 +1,15 @@
-// declare global variables
+//1. declare global variables
 var random = document.querySelectorAll("#snare","#kick","#rack","#floor","#cymbal")
 var simonDrum= [];
 var playerDrum = [];
 var colors = [];
+var player 1;
+var player 2;
+var counter;
 
 
 
-// Play Game-resets and starts new game
+//2. Play Game-resets and starts new game
 document.querySelector("#play").addEventListener("click", playGame);
 function playGame(){
 	for(var i = 0; i < drums.length; i++){
@@ -16,7 +19,7 @@ function playGame(){
 }
 
 
-// function for computer to randomly select drum sequence
+//3. function for computer to randomly select drum sequence
 
 function randomDrum(){
 	if(simonDrum.length === 0){
@@ -34,7 +37,7 @@ function randomDrum(){
 
 
 
-// function to determine if player matched computer sequence and declares winner
+// 4. function to determine if player matched computer sequence and declares winner
 // function playDrum(){
 // 	if(playerDrum.length === 0){
 // 		playerDrum = ["#snare","#kick","#rack","#floor","#cymbal"];
@@ -43,11 +46,11 @@ function randomDrum(){
 
 
 
-// function to determine winner
+// 5. function to determine winner
 
 
 
-// Event Listener for key down for drums
+// 6. Event Listener for key down/key up for drums and Event Listener change color, and Event Listener to not click again
 
 // document.querySelectorAll(".drums").addEventListener("keydown", doKeyDown())
 
