@@ -1,5 +1,5 @@
 //1. declare global variables
-var drums = document.querySelectorAll("#snare","#kick","#rack","#floor","#cymbal");
+var drums = document.querySelectorAll("#snare","#rack","#kick","#floor","#cymbal");
 var kit = [".drums"]
 var simonDrum= [];
 var playerDrum = [];
@@ -26,7 +26,7 @@ function playGame(){
 
 function randomSequence(){
 	if(simonDrum.length === 0){
-		simonDrum = ["#snare","#kick","#rack","#floor","#cymbal"];
+		simonDrum = ["#snare","#rack","#kick","#floor","#cymbal"];
 		colors = ["Blue","Red"];
 		console.log(simonDrum);
 	}
@@ -34,7 +34,7 @@ function randomSequence(){
 	var drumPicker = simonDrum.splice(randomDrums,1);
 	var colorPicker = colors.splice(randomDrums,1);
 
-	document.getElementById("snare","kick","rack","floor","cymbal").innerHTML = drumPicker;
+	document.getElementById("snare","rack","kick","floor","cymbal").innerHTML = drumPicker;
     document.body.style.backgroundColor = colorPicker;
 }
 
@@ -55,32 +55,62 @@ function randomSequence(){
 
 // 6. Event Listener for key down/key up for drums and Event Listener change color, and Event Listener to not click again
 
-document.querySelectorAll(".drums").addEventListener("keyup", doKeyUp())
-document.getElementById("snare","kick","rack","floor","cymbal")
+document.querySelectorAll(".drums").addEventListener("keyup", keyUp());
+document.getElementById("snare","rack","kick","floor","cymbal");
 
 function keyUp(event){
 	if(event.keyCode === 49){
+		document.getElementById("snare");
 		this.style.backgroundColor = "blue";
 		console.log(event);
 
 	}else if(event.keyCode === 50){
+		document.getElementById("rack");
 		this.style.backgroundColor = "blue";
-		console.log(this);
+		console.log(event);
 
 	}else if(event.keyCode === 51){
+		document.getElementById("kick");
 		this.style.backgroundColor = "blue";
-		console.log(this);
+		console.log(event);
 
 	}else if(event.keyCode === 52){
+		document.getElementById("floor");
 		this.style.backgroundColor = "blue";
-		console.log(this);
+		console.log(event);
 
 	}else if(event.keyCode === 32){
+		document.getElementById("cymbal");
 		this.style.backgroundColor = "blue";
-		console.log(this);
+		console.log(event);
+
+	}else if(event.keyCode === 55){
+		document.getElementById("snare");
+		this.style.backgroundColor = "red";
+		console.log(event);
+
+	}else if(event.keyCode === 56){
+		document.getElementById("rack");
+		this.style.backgroundColor = "red";
+		console.log(event);
+
+	}else if(event.keyCode === 57){
+		document.getElementById("kick");
+		this.style.backgroundColor = "red";
+		console.log(event);
+
+	}else if(event.keyCode === 48){
+		document.getElementById("floor");
+		this.style.backgroundColor = "red";
+		console.log(event);
+
+	}else if(event.keyCode === 32){
+		document.getElementById("cymbal");
+		this.style.backgroundColor = "red";
+		console.log(event);
 
 	}
-}
+};
 
 
 // player one keys
