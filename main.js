@@ -1,11 +1,14 @@
 //1. declare global variables
-var random = document.querySelectorAll("#snare","#kick","#rack","#floor","#cymbal")
+var drums = document.querySelectorAll("#snare","#kick","#rack","#floor","#cymbal");
+var kit = [".drums"]
 var simonDrum= [];
 var playerDrum = [];
 var colors = [];
-var player 1;
-var player 2;
+var array = [0,1,2,3,4,5];
+var player1 = 0;
+var player2 = 0;
 var counter;
+
 
 
 
@@ -19,17 +22,17 @@ function playGame(){
 }
 
 
-//3. function for computer to randomly select drum sequence
+//3. function random drum sequence
 
-function randomDrum(){
+function randomSequence(){
 	if(simonDrum.length === 0){
-		simonDrum = ["#snare","#kick","#rack","#floor","#cymbal"]
+		simonDrum = ["#snare","#kick","#rack","#floor","#cymbal"];
 		colors = ["Blue","Red"];
 		console.log(simonDrum);
 	}
 	var randomDrums = [Math.floor(Math.random() * simonDrum.length)];
-	var drumPicker = simonDrum.splice(randomDrum,1);
-	var colorPicker = colors.splice(randomDrum,1);
+	var drumPicker = simonDrum.splice(randomDrums,1);
+	var colorPicker = colors.splice(randomDrums,1);
 
 	document.getElementById("snare","kick","rack","floor","cymbal").innerHTML = drumPicker;
     document.body.style.backgroundColor = colorPicker;
@@ -52,25 +55,32 @@ function randomDrum(){
 
 // 6. Event Listener for key down/key up for drums and Event Listener change color, and Event Listener to not click again
 
-// document.querySelectorAll(".drums").addEventListener("keydown", doKeyDown())
+document.querySelectorAll(".drums").addEventListener("keyup", doKeyUp())
+document.getElementById("snare","kick","rack","floor","cymbal")
 
-// function doKeyDown(e){
-// 	if(e.keydown === 49){
+function keyUp(event){
+	if(event.keyCode === 49){
+		this.style.backgroundColor = "blue";
+		console.log(event);
 
-// 	}
-// 	if(e.keydown === 50){
+	}else if(event.keyCode === 50){
+		this.style.backgroundColor = "blue";
+		console.log(this);
 
-// 	}
-// 	if(e.keydown === 51){
+	}else if(event.keyCode === 51){
+		this.style.backgroundColor = "blue";
+		console.log(this);
 
-// 	}
-// 	if(e.keydown === 52){
+	}else if(event.keyCode === 52){
+		this.style.backgroundColor = "blue";
+		console.log(this);
 
-// 	}
-// 	if(e.keydown === 32){
+	}else if(event.keyCode === 32){
+		this.style.backgroundColor = "blue";
+		console.log(this);
 
-// 	}
-// }
+	}
+}
 
 
 // player one keys
