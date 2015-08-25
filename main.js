@@ -54,63 +54,28 @@ function randomSequence(){
 
 
 // 6. Event Listener for key down/key up for drums and Event Listener change color, and Event Listener to not click again
+var kickSound = new Audio("sounds/SD0000.mp3");
+var snareSound = new Audio("sounds/SD0010.mp3");
 
-document.querySelectorAll(".drums").addEventListener("keyup", keyUp());
-document.getElementById("snare","rack","kick","floor","cymbal");
+$(window).on("keydown", function(event){
+	console.log(event.which);
+	if(event.which === 68){
+		//trigger mp3 audio
+		console.log("snare");
+		snareSound.play();
 
-function keyUp(event){
-	if(event.keyCode === 49){
-		document.getElementById("snare");
-		this.style.backgroundColor = "blue";
-		console.log(event);
+	}else if(event.which === 90){
+		//triggger mp3 audio
+		console.log("kick");
+		kickSound.play();
 
-	}else if(event.keyCode === 50){
-		document.getElementById("rack");
-		this.style.backgroundColor = "blue";
-		console.log(event);
+	}// else if(event.which === )
 
-	}else if(event.keyCode === 51){
-		document.getElementById("kick");
-		this.style.backgroundColor = "blue";
-		console.log(event);
+});
 
-	}else if(event.keyCode === 52){
-		document.getElementById("floor");
-		this.style.backgroundColor = "blue";
-		console.log(event);
 
-	}else if(event.keyCode === 32){
-		document.getElementById("cymbal");
-		this.style.backgroundColor = "blue";
-		console.log(event);
 
-	}else if(event.keyCode === 55){
-		document.getElementById("snare");
-		this.style.backgroundColor = "red";
-		console.log(event);
 
-	}else if(event.keyCode === 56){
-		document.getElementById("rack");
-		this.style.backgroundColor = "red";
-		console.log(event);
-
-	}else if(event.keyCode === 57){
-		document.getElementById("kick");
-		this.style.backgroundColor = "red";
-		console.log(event);
-
-	}else if(event.keyCode === 48){
-		document.getElementById("floor");
-		this.style.backgroundColor = "red";
-		console.log(event);
-
-	}else if(event.keyCode === 32){
-		document.getElementById("cymbal");
-		this.style.backgroundColor = "red";
-		console.log(event);
-
-	}
-};
 
 
 // player one keys
