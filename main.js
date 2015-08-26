@@ -1,13 +1,16 @@
 //1. declare global variables
 var drums = document.querySelectorAll("#snare","#kick","#rack","#floor","#cymbal");
 var kit = [".drums"]
-var simonDrum= [];
+var drumArray = [];
 var playerDrum = [];
+var randomDrums = [];
+var newDrumArray = [];
+
 var colors = [];
-var array = [0,1,2,3,4];
 var player1 = 0;
 var player2 = 0;
 var counter;
+
 
 
 // 2. Event Listener keydown for drums to change color and play sound
@@ -66,11 +69,9 @@ $(window).on("keydown", function(event){
 });
 
 
-
-
-//3. Play Game-resets and starts new game
-document.querySelector("#play").addEventListener("click", playGame);
-function playGame(){
+//3. Reset game and starts new game
+document.querySelector("#reset").addEventListener("click", resetGame);
+function resetGame(){
 	var whiteDrums = ["snare","rack","floor","cymbal"];
 	for(var i = 0; i < whiteDrums.length; i++){
 		 document.getElementById(whiteDrums[i]).style.backgroundColor="white";
@@ -80,25 +81,88 @@ function playGame(){
 }
 
 
-//4. function random drum sequence
-
-function randomSequence(){
-	if(simonDrum.length === 0){
-		simonDrum = ["#snare","#kick","#rack","#floor","#cymbal"];
-		colors = ["Blue","Red"];
-		console.log(simonDrum);
-	}
-	var randomDrums = [Math.floor(Math.random() * simonDrum.length)];
-	var drumPicker = simonDrum.splice(randomDrums,1);
-	var colorPicker = colors.splice(randomDrums,1);
-
-	document.getElementById("snare","kick","rack","floor","cymbal").innerHTML = drumPicker;
-    document.body.style.backgroundColor = colorPicker;
+//4. Computer gets the random drum sequence
+function getSequence(){ 
+	// console.log(simonDrum);
+	var newDrumArray = [];
+	for(var i = 0; i < currSequenceMax; i++){
+		randomDrums = [Math.floor( Math.random() * drumArray.length) ];
+		newDrumArray.push( drumArray[ randomDrums ] );
+		// colorPicker = colors.splice(randomDrums,1);
+		// console.log(randomDrums);
+		// document.getElementsByClassName(".drums").push
+		// document.getElementById("snare","kick","rack","floor","cymbal").innerHTML = drumPicker;
+		// document.getElementById("snare","kick","rack","floor","cymbal").style.backgroundColor = colorPicker;
+    
+    }
+    return newDrumArray
 }
 
+//5. Play game
+
+function sleep(miliseconds) {
+   var currentTime = new Date().getTime();
+
+   while (currentTime + miliseconds >= new Date().getTime()) {
+   }
+}
+
+function playGame( sequence, seqMax ){
+	console.log( sequence, seqMax);
+	// sleep(2000);
+	for(var i = 0; i < seqMax; i++){
+		var e = $.Event("keydown");
+		e.which = ~~$(sequence[i]).attr("data-key");
+		console.log(e.which);
+		sleep(1000);
+		//e.which = 32; // # Some key code value
+		$(window).trigger(e);
+		// mp3's need to have a timeout for the length of the array
+		// $(window).ready(function()){
+			// $("#audio").stop("true").delay('3000').queue(function()){
+			// 	$(this).html('<audio id = "audioSnare" src = "sounds/ambient_snare.mp3">
+			// 	</audio>');
+			// 	$(this).html'(<audio id = "audioKick" src = "sounds/ambient_kick.mp3">
+			// 	</audio>');
+			// 	$(this).html'(<audio id = "audioKick" src = "sounds/ambient_kick.mp3">
+			// 	</audio>');
+			// 	$(this).html'(<audio id = "audioKick" src = "sounds/ambient_kick.mp3">
+			// 	</audio>');
+			// 	$(this).html'(<audio id = "audioKick" src = "sounds/ambient_kick.mp3">
+			// 	</audio>');
+
+			//}
+		}
+			
+	}
 
 
-// 5. function to determine if player matched computer sequence and declares winner
+var drumArray = ["#snare","#kick","#rack","#floor","#cymbal"];
+var colors = ["Blue","Red","Yellow","Green","Purple"];
+var currSequenceMax = 5;
+// set initial sequence
+var sequence = null;
+
+document.querySelector("#play").addEventListener("click", function (){
+	sequence = getSequence();
+	playGame( sequence, currSequenceMax );
+
+});
+
+
+
+
+
+
+//5. in 'success' function we need to grow currSequenceMax by 1
+
+
+
+
+
+
+
+// 6. function to determine if player matched computer sequence and declares winner
 // function playDrum(){
 // 	if(playerDrum.length === 0){
 // 		playerDrum = ["#snare","#kick","#rack","#floor","#cymbal"];
@@ -107,7 +171,7 @@ function randomSequence(){
 
 
 
-// 6. function to determine winner
+// 7. function to determine winner
 
 
 
