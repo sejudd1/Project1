@@ -4,74 +4,32 @@ var kit = [".drums"]
 var simonDrum= [];
 var playerDrum = [];
 var colors = [];
-var array = [0,1,2,3,4,5];
+var array = [0,1,2,3,4];
 var player1 = 0;
 var player2 = 0;
 var counter;
 
 
-
-
-//2. Play Game-resets and starts new game
-document.querySelector("#play").addEventListener("click", playGame);
-function playGame(){
-	for(var i = 0; i < drums.length; i++){
-		drums[i].innerHTML = "";
-		console.log(i);
-	}
-}
-
-
-//3. function random drum sequence
-
-function randomSequence(){
-	if(simonDrum.length === 0){
-		simonDrum = ["#snare","#kick","#rack","#floor","#cymbal"];
-		colors = ["Blue","Red"];
-		console.log(simonDrum);
-	}
-	var randomDrums = [Math.floor(Math.random() * simonDrum.length)];
-	var drumPicker = simonDrum.splice(randomDrums,1);
-	var colorPicker = colors.splice(randomDrums,1);
-
-	document.getElementById("snare","kick","rack","floor","cymbal").innerHTML = drumPicker;
-    document.body.style.backgroundColor = colorPicker;
-}
-
-
-
-// 4. function to determine if player matched computer sequence and declares winner
-// function playDrum(){
-// 	if(playerDrum.length === 0){
-// 		playerDrum = ["#snare","#kick","#rack","#floor","#cymbal"];
-// 	}
-// }
-
-
-
-// 5. function to determine winner
-
-
-
-// 6. Event Listener for key down/key up for drums and Event Listener change color, and Event Listener to not click again
+// 2. Event Listener keydown for drums to change color and play sound
 var kickSound = new Audio("sounds/ambient_kick.mp3");
 var snareSound = new Audio("sounds/ambient_snare.mp3");
 var rackSound = new Audio("sounds/midtom.mp3");
 var floorSound = new Audio("sounds/lotom.mp3");
 var cymbalSound = new Audio("sounds/curecrash.mp3");
 
+
 $(window).on("keydown", function(event){
 	console.log(event.which);
-	if(event.which === 68){
+	if(event.which === 90){
 		console.log("snare");
 		document.getElementById("snare").style.backgroundColor = "DodgerBlue";
 		//trigger mp3 audio
+		$('#snare').toggleClass('drumAction');
 		snareSound.pause();
 		snareSound.currentTime = 0;
 		snareSound.play();
 
-
-	}else if(event.which === 90){
+	}else if(event.which === 68){
 		console.log("kick");
 		document.getElementById("kick").style.backgroundColor = "DodgerBlue";
 		//trigger mp3 audio
@@ -107,27 +65,69 @@ $(window).on("keydown", function(event){
 
 });
 
-// $(window).on("keyup", function(event){
+
+
+
+//3. Play Game-resets and starts new game
+document.querySelector("#play").addEventListener("click", playGame);
+function playGame(){
+	var whiteDrums = ["snare","rack","floor","cymbal"];
+	for(var i = 0; i < whiteDrums.length; i++){
+		 document.getElementById(whiteDrums[i]).style.backgroundColor="white";
+		console.log(whiteDrums);
+	}
+	document.getElementById("kick").style.backgroundColor="black";
+}
+
+
+//4. function random drum sequence
+
+function randomSequence(){
+	if(simonDrum.length === 0){
+		simonDrum = ["#snare","#kick","#rack","#floor","#cymbal"];
+		colors = ["Blue","Red"];
+		console.log(simonDrum);
+	}
+	var randomDrums = [Math.floor(Math.random() * simonDrum.length)];
+	var drumPicker = simonDrum.splice(randomDrums,1);
+	var colorPicker = colors.splice(randomDrums,1);
+
+	document.getElementById("snare","kick","rack","floor","cymbal").innerHTML = drumPicker;
+    document.body.style.backgroundColor = colorPicker;
+}
+
+
+
+// 5. function to determine if player matched computer sequence and declares winner
+// function playDrum(){
+// 	if(playerDrum.length === 0){
+// 		playerDrum = ["#snare","#kick","#rack","#floor","#cymbal"];
+// 	}
+// }
+
+
+
+// 6. function to determine winner
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $(window).on("keydown keyup", function(event){
+// 	var color = event.type == "keydown" ? "DodgerBlue" : "White";
 // 	console.log(event.which);
-
 // 	if(event.which === 68){
-// 		console.log("snare");
-// 		document.getElementById("snare").style.backgroundColor = "DodgerBlue";
-// 		//trigger mp3 audio
-// 		snareSound.play();
-
-// });
-
-
-
-
-
-
-
-
-
-
-
+// 		$(this).css({background: color});
 // player one keys
 // key 1 = 49
 // key 2 = 50

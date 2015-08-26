@@ -18,9 +18,10 @@
 	text-align: center;
 	display: inline-block;
 	background-image: url(images/button_grey_play.png);
-	margin-left: 525px;
+	margin-top: 20px;
 	margin-right: 345px;
 	margin-bottom: 20px;
+	margin-left: 525px;
 	width: 130px;
 	height: 130px;
 	font-size: 20px;
@@ -121,6 +122,9 @@
 }*/
 
 
+/*
+.drumAction {
+	background-color: DodgerBlue;
 
-
+}*/
 
