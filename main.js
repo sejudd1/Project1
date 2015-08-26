@@ -6,7 +6,8 @@ var playerDrum = [];
 var randomDrums = [];
 var newDrumArray = [];
 
-var colors = [];
+var colorArray = [];
+var newColorArray = [];
 var player1 = 0;
 var player2 = 0;
 var counter;
@@ -69,7 +70,7 @@ $(window).on("keydown", function(event){
 });
 
 
-//3. Reset game and starts new game
+//3. Resets game and changes color of the drums back to starting color
 document.querySelector("#reset").addEventListener("click", resetGame);
 function resetGame(){
 	var whiteDrums = ["snare","rack","floor","cymbal"];
@@ -87,58 +88,46 @@ function getSequence(){
 	var newDrumArray = [];
 	for(var i = 0; i < currSequenceMax; i++){
 		randomDrums = [Math.floor( Math.random() * drumArray.length) ];
+		randomColors = [Math.floor( Math.random() * colorArray.length) ];
 		newDrumArray.push( drumArray[ randomDrums ] );
-		// colorPicker = colors.splice(randomDrums,1);
-		// console.log(randomDrums);
-		// document.getElementsByClassName(".drums").push
-		// document.getElementById("snare","kick","rack","floor","cymbal").innerHTML = drumPicker;
+		newColorArray.push(colorArray[ randomColors ] );
 		// document.getElementById("snare","kick","rack","floor","cymbal").style.backgroundColor = colorPicker;
     
     }
-    return newDrumArray
+    return newDrumArray, newColorArray
 }
 
 //5. Play game
-
+//Sleep function gives drum mp3's a delay timeout when each element/drum in array is fired
 function sleep(miliseconds) {
    var currentTime = new Date().getTime();
 
    while (currentTime + miliseconds >= new Date().getTime()) {
    }
 }
-
+//playGame function allows the game to set the sequence once the play button is clicked
 function playGame( sequence, seqMax ){
 	console.log( sequence, seqMax);
-	// sleep(2000);
+	// sleep(2000); 
 	for(var i = 0; i < seqMax; i++){
 		var e = $.Event("keydown");
+		//Data Key attribute assigned in HTML to each drum to identify the element in the sequence array
 		e.which = ~~$(sequence[i]).attr("data-key");
 		console.log(e.which);
+		// Sleep function gives mp3's a delay timeout when each element/drum in array is fired
 		sleep(1000);
-		//e.which = 32; // # Some key code value
+		//triggers the event
 		$(window).trigger(e);
-		// mp3's need to have a timeout for the length of the array
-		// $(window).ready(function()){
-			// $("#audio").stop("true").delay('3000').queue(function()){
-			// 	$(this).html('<audio id = "audioSnare" src = "sounds/ambient_snare.mp3">
-			// 	</audio>');
-			// 	$(this).html'(<audio id = "audioKick" src = "sounds/ambient_kick.mp3">
-			// 	</audio>');
-			// 	$(this).html'(<audio id = "audioKick" src = "sounds/ambient_kick.mp3">
-			// 	</audio>');
-			// 	$(this).html'(<audio id = "audioKick" src = "sounds/ambient_kick.mp3">
-			// 	</audio>');
-			// 	$(this).html'(<audio id = "audioKick" src = "sounds/ambient_kick.mp3">
-			// 	</audio>');
-
-			//}
+		
 		}
 			
 	}
 
-
+//drumArray variable for the getSequence loop
 var drumArray = ["#snare","#kick","#rack","#floor","#cymbal"];
-var colors = ["Blue","Red","Yellow","Green","Purple"];
+//colorArray variable for the getSequence loop
+var colorArray = ["Blue","Red","Yellow","Green","Purple"];
+//Current Sequence Max is the max number of the random sequences
 var currSequenceMax = 5;
 // set initial sequence
 var sequence = null;
