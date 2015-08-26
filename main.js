@@ -28,7 +28,7 @@ $(window).on("keydown", function(event){
 		snareSound.pause();
 		snareSound.currentTime = 0;
 		snareSound.play();
-
+ 
 	}else if(event.which === 68){
 		console.log("kick");
 		document.getElementById("kick").style.backgroundColor = "DodgerBlue";
