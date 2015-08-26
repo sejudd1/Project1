@@ -1,5 +1,5 @@
 //1. declare global variables
-var drums = document.querySelectorAll("#snare","#rack","#kick","#floor","#cymbal");
+var drums = document.querySelectorAll("#snare","#kick","#rack","#floor","#cymbal");
 var kit = [".drums"]
 var simonDrum= [];
 var playerDrum = [];
@@ -26,7 +26,7 @@ function playGame(){
 
 function randomSequence(){
 	if(simonDrum.length === 0){
-		simonDrum = ["#snare","#rack","#kick","#floor","#cymbal"];
+		simonDrum = ["#snare","#kick","#rack","#floor","#cymbal"];
 		colors = ["Blue","Red"];
 		console.log(simonDrum);
 	}
@@ -34,7 +34,7 @@ function randomSequence(){
 	var drumPicker = simonDrum.splice(randomDrums,1);
 	var colorPicker = colors.splice(randomDrums,1);
 
-	document.getElementById("snare","rack","kick","floor","cymbal").innerHTML = drumPicker;
+	document.getElementById("snare","kick","rack","floor","cymbal").innerHTML = drumPicker;
     document.body.style.backgroundColor = colorPicker;
 }
 
@@ -54,24 +54,74 @@ function randomSequence(){
 
 
 // 6. Event Listener for key down/key up for drums and Event Listener change color, and Event Listener to not click again
-var kickSound = new Audio("sounds/SD0000.mp3");
-var snareSound = new Audio("sounds/SD0010.mp3");
+var kickSound = new Audio("sounds/ambient_kick.mp3");
+var snareSound = new Audio("sounds/ambient_snare.mp3");
+var rackSound = new Audio("sounds/midtom.mp3");
+var floorSound = new Audio("sounds/lotom.mp3");
+var cymbalSound = new Audio("sounds/curecrash.mp3");
 
 $(window).on("keydown", function(event){
 	console.log(event.which);
 	if(event.which === 68){
-		//trigger mp3 audio
 		console.log("snare");
+		document.getElementById("snare").style.backgroundColor = "DodgerBlue";
+		//trigger mp3 audio
+		snareSound.pause();
+		snareSound.currentTime = 0;
 		snareSound.play();
 
+
 	}else if(event.which === 90){
-		//triggger mp3 audio
 		console.log("kick");
+		document.getElementById("kick").style.backgroundColor = "DodgerBlue";
+		//trigger mp3 audio
+		kickSound.pause();
+		kickSound.currentTime = 0;
 		kickSound.play();
 
-	}// else if(event.which === )
+	}else if(event.which === 82){
+		console.log("rack");
+		document.getElementById("rack").style.backgroundColor = "DodgerBlue";
+		//trigger mp3 audio
+		rackSound.pause();
+		rackSound.currentTime = 0;
+		rackSound.play();
+
+	}else if(event.which === 84){
+		console.log("floor");
+		document.getElementById("floor").style.backgroundColor = "DodgerBlue";
+		//trigger mp3 audio
+		floorSound.pause();
+		floorSound.currentTime = 0;
+		floorSound.play();
+
+	}else if(event.which === 32){
+		console.log("cymbal");
+		document.getElementById("cymbal").style.backgroundColor = "DodgerBlue";
+		//trigger mp3 audio
+		cymbalSound.pause();
+		cymbalSound.currentTime = 0;
+		cymbalSound.play();
+	}
+	
 
 });
+
+// $(window).on("keyup", function(event){
+// 	console.log(event.which);
+
+// 	if(event.which === 68){
+// 		console.log("snare");
+// 		document.getElementById("snare").style.backgroundColor = "DodgerBlue";
+// 		//trigger mp3 audio
+// 		snareSound.play();
+
+// });
+
+
+
+
+
 
 
 
