@@ -1,3 +1,12 @@
+html {
+	background-color: black;
+}
+
+body {
+	background-color: black;
+}
+
+
 .stageWrapper {
 	margin: 0 auto;
 	position: relative;
@@ -5,13 +14,11 @@
 
 }
 
-
-
 .stageWrapper h1 {
-	font-family: 'Roboto', sans-serif;
-	font-size: 50px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 40px;
 	text-align: center;
-	color: white;
+	color: rgb(255,255,255);
 }
 
 #play {
@@ -25,14 +32,14 @@
 	width: 130px;
 	height: 130px;
 	font-size: 20px;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 
 }
 
 #reset {
 	text-align: center;
 	display: inline-block;
-	background-color: gray;
+	background-color: rgb(179,179,179);
 	margin-top: 20px;
 	margin-right: 345px;
 	margin-bottom: 20px;
@@ -40,21 +47,21 @@
 	width: 130px;
 	height: 130px;
 	font-size: 20px;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 
 }
 
 .stage1 {
-	background-image: url(images/drumkit2.gif); 
-	background-size: 660px 600px;
+	background-image: url(images/Newdrumkit.png); 
+	background-size: 754px 570px;
 	background-repeat: no-repeat;
 	border-style: solid;
     border-width: 5px;
 	border-color: white;
 	background-color: white;
 	margin: 0 auto;
-	width: 660px;
-	height: 660px;
+	width: 754px;
+	height: 600px;
 	position: relative;
 	
 
@@ -63,9 +70,6 @@
 
 .drums {
 	border-radius: 110px;
-	border-style: solid;
-    border-width: 4px;
-	border-color: black;
 	background-image: white; 
 	background-position: 100px 100px;  
   	width: 118px;
@@ -77,49 +81,43 @@
 }
 
 #snare {
-	top: 43%;
-	left: 26.5%;
-	background-color: white;
+	top: 264px;
+	left: 203px;
 }
 
 #rack {
-	top: 24.5%;
-	left: 33%;
+	top: 171px;
+	left: 240px;
+	width: 72px;
+	height: 72px;
 
 }
 
 #cymbal {
-	top: 18.5%;
-	left: 57%;
+	top: 142px;
+	left: 361px;
+	width: 173px;
+	height: 173px;
 }
 
 
 
 #floor {
-	top: 45%;
-	left: 57%;
+	top: 277px;
+	left: 390px;
+	width: 105px;
+	height: 105px;
 }
 
 
 #kick {
-	border-radius: 0;
-	border-style: solid;
-    border-width: 5px;
-	border-color: black;
+	border-radius: 17px;
   	width: 175px;
-  	height: 175px;
-  	top: 15%;
-  	left: 47%;
-  	margin-left: -88px;
-  	background-color: black;
-  	text-align: center;
+  	height: 195px;
+  	top: 65px;
+  	left: 279px;
   	position: absolute;
-  	font-size: 178px;
-  	font-family: 'Roboto', sans-serif;
-  	background-color: rgba(255,255,255,.7);
- 
-
- 
+  
 }
 
 

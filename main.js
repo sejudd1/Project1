@@ -28,7 +28,7 @@ $(window).on("keydown", function(event){
 	console.log(event.which);
 	if(event.which === 90){
 		// console.log("snare");
-		document.getElementById("snare").style.backgroundColor = "Blue";
+		document.getElementById("snare").style.backgroundColor = "rgba(0,0,255,0.3)";
 		//trigger mp3 audio
 		$('#snare').toggleClass('drumAction');
 		snareSound.pause();
@@ -38,7 +38,7 @@ $(window).on("keydown", function(event){
  
 	}else if(event.which === 68){
 		// console.log("kick");
-		document.getElementById("kick").style.backgroundColor = "Red";
+		document.getElementById("kick").style.backgroundColor = "rgba(255,0,0,0.3)";
 		//trigger mp3 audio
 		kickSound.pause();
 		kickSound.currentTime = 0;
@@ -47,7 +47,7 @@ $(window).on("keydown", function(event){
 
 	}else if(event.which === 82){
 		// console.log("rack");
-		document.getElementById("rack").style.backgroundColor = "Green";
+		document.getElementById("rack").style.backgroundColor = "rgba(0,255,0,0.3)";
 		//trigger mp3 audio
 		rackSound.pause();
 		rackSound.currentTime = 0;
@@ -56,16 +56,16 @@ $(window).on("keydown", function(event){
 
 	}else if(event.which === 84){
 		// console.log("floor");
-		document.getElementById("floor").style.backgroundColor = "Yellow";
+		document.getElementById("floor").style.backgroundColor = "rgba(255, 255, 0, 0.3)";
 		//trigger mp3 audio
 		floorSound.pause();
 		floorSound.currentTime = 0;
 		floorSound.play();
 		playerArray2.push( "#floor");
 
-	}else if(event.which === 32){
+	}else if(event.which === 71){
 		// console.log("cymbal");
-		document.getElementById("cymbal").style.backgroundColor = "Purple";
+		document.getElementById("cymbal").style.backgroundColor = "rgba(255,0,255,0.3)";
 		//trigger mp3 audio
 		cymbalSound.pause();
 		cymbalSound.currentTime = 0;
@@ -82,8 +82,8 @@ document.querySelector("#reset").addEventListener("click", function(){
 // function resetGame(){
 	var whiteDrums = ["snare","kick","rack","floor","cymbal"];
 	for(var i = 0; i < whiteDrums.length; i++){
-		 document.getElementById(whiteDrums[i]).style.backgroundColor="white";
-		 document.getElementById(whiteDrums[i]).style.opacity = "0.5";
+		 document.getElementById(whiteDrums[i]).style.backgroundColor="rgb(255,255,255)";
+		 document.getElementById(whiteDrums[i]).style.opacity = "0.1";
 	}
 	// document.getElementById("kick").style.backgroundColor="white opacity: .4";
 });
@@ -133,11 +133,11 @@ function checkWinner(){
 		if( playerArray2[i] !== sequence[i] ){
 
 			return false;
-			alert ("Sorry, Don's Quit Your Day Job!");
+			alert ("Simon Says, Sorry, Don't Quit Your Day Job!");
 		}
 			
 
-	} alert ("You're a Drum Rockstar!");
+	} alert ("Simon Says You're a Drum Rockstar!");
 }
 
 
@@ -186,12 +186,12 @@ document.querySelector("#play").addEventListener("click", function (){
 
 
 // player keys
-// key 1 = 49
-// key 2 = 50
-// key 3 = 51
-// key 4 = 52
+// key 1 = 49, z
+// key 2 = 50, d
+// key 3 = 51, r
+// key 4 = 52, t
 
-// key spacebar = 32
+// key 5 = 71, g key
 
 
 
