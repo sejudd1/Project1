@@ -8,10 +8,9 @@ var randomDrums = [];
 
 var colorArray = [];
 var newColorArray = [];
-var player1 = 0;
-var player2 = 0;
-var counter;
-var playerArray2 = [];
+var turns = 0;
+var tie = 0;
+var playerSequence = [];
 
 
 
@@ -25,52 +24,52 @@ var cymbalSound = new Audio("sounds/curecrash.mp3");
 
 //jQuery with if/else, enables keydown, keyboard keycode to correspond to drum kit with color
 $(window).on("keydown", function(event){
-	console.log(event.which);
+	// console.log(event.which);
 	if(event.which === 90){
-		// console.log("snare");
+		console.log("snare");
 		document.getElementById("snare").style.backgroundColor = "rgba(0,0,255,0.3)";
 		//trigger mp3 audio
-		$('#snare').toggleClass('drumAction');
+		// $('#snare').toggleClass('drumAction');
 		snareSound.pause();
 		snareSound.currentTime = 0;
 		snareSound.play();
-		playerArray2.push( "#snare");
+		playerSequence.push( "#snare");
  
 	}else if(event.which === 68){
-		// console.log("kick");
+		console.log("kick");
 		document.getElementById("kick").style.backgroundColor = "rgba(255,0,0,0.3)";
 		//trigger mp3 audio
 		kickSound.pause();
 		kickSound.currentTime = 0;
 		kickSound.play();
-		playerArray2.push( "#kick");
+		playerSequence.push( "#kick");
 
 	}else if(event.which === 82){
-		// console.log("rack");
+		console.log("rack");
 		document.getElementById("rack").style.backgroundColor = "rgba(0,255,0,0.3)";
 		//trigger mp3 audio
 		rackSound.pause();
 		rackSound.currentTime = 0;
 		rackSound.play();
-		playerArray2.push( "#rack");
+		playerSequence.push( "#rack");
 
 	}else if(event.which === 84){
-		// console.log("floor");
+		console.log("floor");
 		document.getElementById("floor").style.backgroundColor = "rgba(255, 255, 0, 0.3)";
 		//trigger mp3 audio
 		floorSound.pause();
 		floorSound.currentTime = 0;
 		floorSound.play();
-		playerArray2.push( "#floor");
+		playerSequence.push( "#floor");
 
 	}else if(event.which === 71){
-		// console.log("cymbal");
+		console.log("cymbal");
 		document.getElementById("cymbal").style.backgroundColor = "rgba(255,0,255,0.3)";
-		//trigger mp3 audio
+		// trigger mp3 audio
 		cymbalSound.pause();
 		cymbalSound.currentTime = 0;
 		cymbalSound.play();
-		playerArray2.push( "#cymbal");
+		playerSequence.push( "#cymbal");
 	}
 	
 
@@ -89,7 +88,7 @@ document.querySelector("#reset").addEventListener("click", function(){
 });
 
 
-//4. Computer gets the random drum sequence
+//4. Computer gets the random drum sequence and plays the sequence with drum sound and color per drum
 function getSequence(){ 
 
 	var newDrumArray = [];
@@ -101,7 +100,6 @@ function getSequence(){
     return newDrumArray;
 }
 
-//5. Play game
 //Sleep function gives drum mp3's a delay timeout when each element/drum in array is fired
 function sleep(miliseconds) {
    var currentTime = new Date().getTime();
@@ -109,38 +107,91 @@ function sleep(miliseconds) {
    while (currentTime + miliseconds >= new Date().getTime()) {
    }
 }
-//playGame function allows the game to set the sequence once the play button is clicked
-function playGame( sequence, seqMax ){
+
+
+//Plays Computer Sounds and is called in the function compSequence
+function playCompSounds( event ) {
+	if(event === "#snare"){
+		console.log("snare");
+		//trigger mp3 audio
+		snareSound.pause();
+		document.getElementById("snare").style.backgroundColor = "rgba(0,0,255,0.3)";
+		snareSound.currentTime = 0;
+		snareSound.play();
+
+ 
+	}else if(event === "#kick"){
+		console.log("kick");
+		//trigger mp3 audio
+		kickSound.pause();
+		document.getElementById("kick").style.backgroundColor = "rgba(255,0,0,0.3)";
+		kickSound.currentTime = 0;
+		kickSound.play();
+		
+
+	}else if(event === "#rack"){
+		console.log("rack");
+		//trigger mp3 audio
+		rackSound.pause();
+		rackSound.currentTime = 0;
+		rackSound.play();
+		document.getElementById("rack").style.backgroundColor = "rgba(0,255,0,0.3)";
+
+	}else if(event === "#floor"){
+		console.log("floor");
+		//trigger mp3 audio
+		floorSound.pause();
+		floorSound.currentTime = 0;
+		floorSound.play();
+		document.getElementById("floor").style.backgroundColor = "rgba(255, 255, 0, 0.3)";
+
+	}else if(event === "#cymbal"){
+		console.log("cymbal");
+		// trigger mp3 audio
+		cymbalSound.pause();
+		cymbalSound.currentTime = 0;
+		cymbalSound.play();
+		document.getElementById("cymbal").style.backgroundColor = "rgba(255,0,255,0.3)";
+	}
+}
+
+//compSequence function sets the sequence for player to match once the play button is clicked
+function compSequence( sequence, seqMax ){
 	console.log( sequence, seqMax); 
-	for(var i = 0; i < seqMax; i++){
-		var e = $.Event("keydown");
-		//Data Key attribute assigned in HTML to each drum to identify the element in the sequence array
+	for( var i = 0; i < seqMax; i++ ){
+		//Loops thru sequence array
 		console.log("Sequence at i is = " + sequence[i]);
-		e.which = ~~$(sequence[i]).attr("data-key");
-		console.log(e.which);
+		playCompSounds( sequence[i] );
+		console.log("playerSequence = " + playerSequence);
 		// Sleep function gives mp3's a delay timeout when each element/drum in array is fired
 		sleep(1000);
 		//triggers the event
-		$(window).trigger(e);
+		//$(window).trigger(e) 
+		
 		
 	}
-	sleep(10000);
+	//setTimeout is to allow 10seconds of time for the player to play the computers sequence
+	setTimeout( checkWinner, 10000);
 	checkWinner();
 }
 
+//5. checkWinner function takes the compSequence and compares to playerSequence to determine Winner or Loser
 function checkWinner(){
-	for(var i = 0; i < currSequenceMax; i++){
-		if( playerArray2[i] !== sequence[i] ){
-
+	for( var i = 0; i < currSequenceMax; i++ ){
+		if( playerSequence[i] !== sequence[i] ){
+			console.log("Loser");
 			return false;
-			alert ("Simon Says, Sorry, Don't Quit Your Day Job!");
-		}
-			
+			console.log("Simon Says, Don't Quit Your Day Job!");
+			// alert ("Simon Says, Don't Quit Your Day Job!");
+			this.turns++
+		
+			}else{		
+			console.log("Simon Says You're a Drum Rockstar!"); 
+			// alert ("Simon Says You're a Drum Rockstar!");
 
-	} alert ("Simon Says You're a Drum Rockstar!");
+			}
+	}console.log("Winner");
 }
-
-
 
 
 //drumArray and colorArray variables for the getSequence loop
@@ -150,39 +201,42 @@ var colorArray = ["Blue","Red","Yellow","Green","Purple"];
 var currSequenceMax = 5;
 // set initial sequence
 var sequence = null;
-
+//DOM event listener that listens for the play button to be clicked to start game
 document.querySelector("#play").addEventListener("click", function (){
 	sequence = getSequence();
-	playGame( sequence, currSequenceMax );
+	compSequence( sequence, currSequenceMax );
 
 });
 
 
-//5. getPlayer
+//6. Player Turn
 //turns should equal one at reset and play buttons are hit
 //turns, winners, scores
-// function playerOne(){
-// 	console.log(playerOne);
-// function getPlayer(){
-// 	if(!this.innerHTML){
-// 		if(turns % 2 === 1){
-// 			this.innerHTML
+
+// $(window).on("keydown", function(){
+// 	console.log(event.which);
+// 	if(!$(event.which).html()){
+// 		if( turns === 1){
+// 			$(event.which).html = ("Player 1");
+// 		}else{
+// 			$(event.which).html = ("Player 2");
 // 		}
-// 	}
-// }
+// 		checkWinner();
+// 		tie++;
+// 		if(tie > 5){
+// 			console.log("Tie! Keep Practicing.");
+// 			// alert("Tie! Keep Practicing.");
+// 		}
+// 		turns = turns === 0 ? 1 : 0;
+// 		console.log(turns);
 
+// 		}
+// })
 
-// 6. function to determine if player matched computer sequence and declares winner
+// 7. Player Sequence function to determine if player matched computer sequence and declares winner
    //compare player sequence with computer sequence with if else statements
 
-//7. function getWinner(){
-	// if player one has the higher score than playerTwo alert "playerOne() + 'Is Rockstar!'"
-	// else playerTwo is  Rockstar
-	// 	return getWinner
-	// add the round until the player loses
-	// 	return "Dont quit your dayjob!"
 
-//}
 
 
 // player keys

@@ -21,35 +21,7 @@ body {
 	color: rgb(255,255,255);
 }
 
-#play {
-	text-align: center;
-	display: inline-block;
-	background-image: url(images/button_grey_play.png);
-	margin-top: 20px;
-	margin-right: 345px;
-	margin-bottom: 20px;
-	margin-left: 525px;
-	width: 130px;
-	height: 130px;
-	font-size: 20px;
-	font-family: 'Montserrat', sans-serif;
 
-}
-
-#reset {
-	text-align: center;
-	display: inline-block;
-	background-color: rgb(179,179,179);
-	margin-top: 20px;
-	margin-right: 345px;
-	margin-bottom: 20px;
-	margin-left: 525px;
-	width: 130px;
-	height: 130px;
-	font-size: 20px;
-	font-family: 'Montserrat', sans-serif;
-
-}
 
 .stage1 {
 	background-image: url(images/Newdrumkit.png); 
@@ -118,6 +90,45 @@ body {
   	left: 279px;
   	position: absolute;
   
+}
+
+.buttons{
+	width: 100%;
+	margin-left: 480px;
+	display: inline-block;
+	position: relative;
+}
+
+#play {
+	text-align: center;
+	display: inline-block;
+	background-image: url(images/button_grey_play.png);
+	margin: 20px auto;
+	/*margin-right: 345px;*/
+	/*margin-bottom: 20px;*/
+	margin-left: -25px;
+	width: 130px;
+	height: 130px;
+	font-size: 20px;
+	font-family: 'Montserrat', sans-serif;
+	position: absolute;
+
+}
+
+#reset {
+	text-align: center;
+	display: inline-block;
+	background-color: rgb(179,179,179);
+	margin: 20px auto;
+	/*margin-right: 345px;*/
+	/*margin-bottom: 20px;*/
+	margin-left: 140px;
+	width: 130px;
+	height: 130px;
+	font-size: 20px;
+	font-family: 'Montserrat', sans-serif;
+	position: absolute;
+
 }
 
 
