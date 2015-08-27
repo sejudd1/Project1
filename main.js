@@ -12,6 +12,8 @@ var turns = 0;
 var tie = 0;
 var playerSequence = [];
 
+var compPlaySpeed = 700
+
 
 
 // 2. Event Listener keydown for drums to change color and play sound
@@ -21,6 +23,9 @@ var snareSound = new Audio("sounds/ambient_snare.mp3");
 var rackSound = new Audio("sounds/midtom.mp3");
 var floorSound = new Audio("sounds/lotom.mp3");
 var cymbalSound = new Audio("sounds/curecrash.mp3");
+var drumArray = [snareSound,kickSound,rackSound,floorSound,cymbalSound];
+
+
 
 //jQuery with if/else, enables keydown, keyboard keycode to correspond to drum kit with color
 $(window).on("keydown", function(event){
@@ -101,16 +106,17 @@ function getSequence(){
 }
 
 //Sleep function gives drum mp3's a delay timeout when each element/drum in array is fired
-function sleep(miliseconds) {
-   var currentTime = new Date().getTime();
+// function sleep(miliseconds) {
+//    var currentTime = new Date().getTime();
 
-   while (currentTime + miliseconds >= new Date().getTime()) {
-   }
-}
+//    while (currentTime + miliseconds >= new Date().getTime()) {
+//    }
+// }
 
 
 //Plays Computer Sounds and is called in the function compSequence
 function playCompSounds( event ) {
+	console.log(event)
 	if(event === "#snare"){
 		console.log("snare");
 		//trigger mp3 audio
@@ -128,7 +134,6 @@ function playCompSounds( event ) {
 		kickSound.currentTime = 0;
 		kickSound.play();
 		
-
 	}else if(event === "#rack"){
 		console.log("rack");
 		//trigger mp3 audio
@@ -158,27 +163,53 @@ function playCompSounds( event ) {
 //compSequence function sets the sequence for player to match once the play button is clicked
 function compSequence( sequence, seqMax ){
 	console.log( sequence, seqMax); 
-	for( var i = 0; i < seqMax; i++ ){
+	/*for( var i = 0; i < seqMax; i++ ){
 		//Loops thru sequence array
 		console.log("Sequence at i is = " + sequence[i]);
 		playCompSounds( sequence[i] );
 		console.log("playerSequence = " + playerSequence);
 		// Sleep function gives mp3's a delay timeout when each element/drum in array is fired
-		sleep(1000);
+		// sleep(700);
 		//triggers the event
-		//$(window).trigger(e) 
-		
-		
+		//$(window).trigger(e) 	
+	}*/
+	//someArray = [1,2,3,4,5];
+	//creating a new variable that is equal to getSequence function that will play the sounds of each drum in the computer sequence
+	var sequenceArray = getSequence();
+	//setting a for loop at human speed, new variable intervalI, basically the i in a for loop
+	var intervalI = 0
+	//setting new variable for a function to run the human for loop
+	var myInterval = setInterval(function(){
+		//line 183 to 190 is the for loop, will run thru the sequence array determine length
+	if(intervalI < sequenceArray.length){
+		console.log(sequenceArray[intervalI]);
+		console.log(sequenceArray[intervalI])
+		sequenceArray[intervalI].play();
+
+		console.log(sequenceArray[intervalI]);
+	} else {
+		clearInterval(myInterval);
 	}
+	//adds thru the loop until intervalI is equal to length of sequenceArray
+	intervalI ++;
+	//comPlaySpeed is the variable for the speed of the delay of the sounds when computer plays the sound
+	}, compPlaySpeed);
+
 	//setTimeout is to allow 10seconds of time for the player to play the computers sequence
 	setTimeout( checkWinner, 10000);
 	checkWinner();
 }
 
+//setInterval( playCompSounds( sequence[i], 700 ));
+
+
+
+
+
 //5. checkWinner function takes the compSequence and compares to playerSequence to determine Winner or Loser
 function checkWinner(){
 	for( var i = 0; i < currSequenceMax; i++ ){
-		if( playerSequence[i] !== sequence[i] ){
+		if( playerSequence[i] !== compSequence[i] ){
 			console.log("Loser");
 			return false;
 			console.log("Simon Says, Don't Quit Your Day Job!");
@@ -195,7 +226,8 @@ function checkWinner(){
 
 
 //drumArray and colorArray variables for the getSequence loop
-var drumArray = ["#snare","#kick","#rack","#floor","#cymbal"];
+//var drumArray = ["#snare","#kick","#rack","#floor","#cymbal"];
+
 var colorArray = ["Blue","Red","Yellow","Green","Purple"];
 //Current Sequence Max is the max number of the random sequences
 var currSequenceMax = 5;
