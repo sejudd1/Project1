@@ -61,25 +61,13 @@
  	
 }
 
-/*.stage2 {
-
-	border-style: solid;
-    border-width: 5px;
-	border-color: black;
-	margin: 0 auto;
-	width: 660px;
-	height: 660px;
-	background-color: #D8D8D8;	
-
- 	
-}*/
-
 .drums {
 	border-radius: 110px;
 	border-style: solid;
     border-width: 4px;
 	border-color: black;
-	background-color: white;
+	background-image: white; 
+	background-position: 100px 100px;  
   	width: 118px;
   	height: 120px;
   	margin: 8px;
@@ -89,21 +77,20 @@
 }
 
 #snare {
-	top: 44%;
-	left: 26%;
+	top: 43%;
+	left: 26.5%;
+	background-color: white;
 }
 
 #rack {
-	top: 27%;
-	left: 25%;
+	top: 24.5%;
+	left: 33%;
 
 }
 
 #cymbal {
-	top: 19%;
-	left: 58%;
-	opacity: 1.0;
-	filter: alpha(opacity=100);
+	top: 18.5%;
+	left: 57%;
 }
 
 
@@ -117,7 +104,7 @@
 #kick {
 	border-radius: 0;
 	border-style: solid;
-    border-width: 3px;
+    border-width: 5px;
 	border-color: black;
   	width: 175px;
   	height: 175px;
@@ -129,23 +116,11 @@
   	position: absolute;
   	font-size: 178px;
   	font-family: 'Roboto', sans-serif;
+  	background-color: rgba(255,255,255,.7);
  
 
  
 }
 
-/*.circle:hover {
-	background-color: red;
-}
 
-#kick:hover {
-	background-color: blue;
-}*/
-
-
-/*
-.drumAction {
-	background-color: DodgerBlue;
-
-}*/
 
