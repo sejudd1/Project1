@@ -169,6 +169,8 @@ function compSequence( sequence, seqMax ){
 //5. checkWinner function takes the compSequence and compares to playerSequence to determine Winner or Loser
 function checkWinner(){
 	
+	//The console wont evaluate true or false when comparing two uniquely ID'd objects, such as the arrays player
+	//sequence and compGenSequence, so used the .join method to get the strings out of the array, and then compare them to each other to get true or false result.
 	//we can evaluate the equality of the'stringified' versions of these arrays with:
 
 	var stringifiedPlayerSeq = playerSequence.join(' ');
@@ -179,9 +181,13 @@ function checkWinner(){
 
 
 	if (stringifiedPlayerSeq == stringifiedCompSeq) {
-		console.log("Simon Says You're a Drum Rockstar!");
+		console.log("Simon Says, You're a Drum Rockstar!");
+		alert("Simon Says, You're a Drum Rockstar!");
 	}else {
 		console.log("Simon Says, Don't Quit Your Day Job!");
+		alert("Simon Says, Don't Quit Your Day Job!");
+		
+
 	}
 }
 

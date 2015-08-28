@@ -17,8 +17,12 @@
 ----------
 #####Game Play
 >Players will use keyboard buttons to play the drum kit.  
->Player One will use the number keys "1","2","3","4" and Spacebar.  
->Player Two will use "7","8","9","0", and Spacebar.
+>The Players, both one and two will use the keys "z","d","r","t", "g" to match Simon Says.
+>"z" key = Snare Drum
+>"d" key = Kick Drum 
+>"r" key = Rack Tom
+>"t" key = Floor TOm
+>"g" key = Cymbal
 >
 >To begin the game, the player will click the "Play" button.
 >
