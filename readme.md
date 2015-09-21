@@ -1,5 +1,4 @@
 Drum For Dollars (working title)
-----------------
 
 Project 1, Week 3, WDI-18
 
@@ -11,7 +10,9 @@ Project 1, Week 3, WDI-18
 
 >The game will also have a 30 seond countdown clock per turn. 
 
->Split Screen, showing player one drum kit on the left and player two kit on the right.  
+>Split Screen, showing player one drum kit on the left and player two kit on the right.
+
+>Drum on!
 
 
 
